@@ -183,14 +183,16 @@ void Prim(int s) {
 			}
 		}
 		if (u == 0) break;
-		Wt += d[u];
+		Wt += a[u][e[u]];
 		v.push_back({ e[u], u });
+		vs[u] = 1;
 		for (int v = 1; v <= n; v++) {
-			if (vs[v] == 0 && d[v] > d[u] + a[u][v]) {
+			if (vs[v] == 0 && d[v] > a[u][v]) {
 				d[v] = a[u][v];
 				e[v] = u;
 			}
 		}
+		vs[u] = 0;
 		print(u, Wt);
 		vs[u] = 1;
 		dem++;
